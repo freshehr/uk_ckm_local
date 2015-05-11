@@ -1,0 +1,72 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.patient_personal.v0
+
+concept
+	[at0000]	-- Patient requirements
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Ian McNicoll">
+		["email"] = <"ian@handihealth.org">
+		["organisation"] = <"HANDIHealth,UK">
+		["date"] = <"2015-05-11">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record requirements or preferences expressed by the patient, and optionally some demographics details that are normally supported in a separate demographics service e.g. Next of kin or language preferences. ">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"2C3A5B4911ABA89B7C2686E57E8A1012">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Patient requirements
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+		context matches {
+			EVENT_CONTEXT matches {
+				other_context matches {
+					ITEM_TREE[at0001] matches {	-- Tree
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype CLUSTER[at0002] occurrences matches {0..*} matches {	-- Extension
+								include
+									archetype_id/value matches {/.*/}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Patient requirements">
+					description = <"Persistent requirements or preferences expressed by the patient.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local context or to align with other reference models/formalisms.">
+					comment = <"Local hospital departmental infomation or additional metadata to align with FHIR or CIMI equivalents.">
+				>
+			>
+		>
+	>
