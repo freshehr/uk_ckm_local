@@ -1,0 +1,95 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.psychosis_summary_mhldds.v0
+
+concept
+	[at0000]	-- Psychosis summary (MHLDDS)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Ian McNicoll">
+		["email"] = <"ian@handihealth.org">
+		["organisation"] = <"HANDIHealth,UK">
+		["date"] = <"2015-05-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record a summary of psychosis aligned with MHLDDS dataset.">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"652FC040DCA28415DAEC30DE0B0AF619">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Psychosis summary (MHLDDS)
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Prodrome psychosis date
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches {	-- Emergent psychosis date
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {	-- Manifest psychosis date
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {	-- Psychosis prescription date
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches {	-- Psychosis treatment start date
+				value matches {
+					DV_DATE_TIME matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Psychosis summary (MHLDDS)">
+					description = <"Summary of psychosis aligned with MHLDDS dataset.">
+				>
+				["at0001"] = <
+					text = <"Prodrome psychosis date">
+					description = <"Date at which first noticeable change in behaviour or mental state occurred prior to emergence of full-blown psychosis for the patient. There should be a clear deterioration in functioning from previous levels. ">
+					comment = <"Examples include poor attendance/worsening performance at school/work, trouble sleeping, withdrawing from/fighting with friends/family, attenuated psychotic symptoms (increased suspiciousness,/jealously, occasionally hearing name being called when no' ones around, whisperings, slight confusion in thinking etc.).">
+				>
+				["at0002"] = <
+					text = <"Manifest psychosis date">
+					description = <"Date at which a positive psychotic symptom has lasted for a week for the patient. This is usually just 7 days after the date of the first psychotic symptom.">
+				>
+				["at0003"] = <
+					text = <"Emergent psychosis date">
+					description = <"Date at which there was first clear evidence of a positive psychotic symptom for the patient (i.e. delusion, hallucination, or thought disorder), regardless of its duration. 
+Such a symptom would be scored 4 or more on the PANSS.">
+				>
+				["at0004"] = <
+					text = <"Psychosis prescription date">
+					description = <"Date the patient was prescribed anti-psychotic medication.">
+				>
+				["at0005"] = <
+					text = <"Psychosis treatment start date">
+					description = <"Date the patient commenced prescribed (not PRN) anti-psychotic medication and thereafter was compliant for at least 75% of the time during the subsequent month (using clinical judgement). 
+
+Note: For the majority of people this will be the same date as the date of prescription.">
+				>
+			>
+		>
+	>

@@ -1,0 +1,163 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.delayed_discharge_uk.v0
+
+concept
+	[at0000]	-- Delayed discharge (UK)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Ian McNicoll">
+		["email"] = <"ian@handihealth.org">
+		["organisation"] = <"HANDIHealth,UK">
+		["date"] = <"2015-05-13">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record details of a delayed discharge.">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"DC461E3C6B7869BEC5A93735D30A1969">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Delayed discharge (UK)
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Start date
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- End date
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Delayed discharge reason
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0005, 	-- Awaiting completion of assessment
+									at0006, 	-- Awaiting public funding
+									at0007, 	-- Awaiting further non-acute (including PCT community and mental health) NHS care (including intermediate care, rehabilitation services etc)
+									at0008, 	-- Awaiting residential home placement or availability
+									at0009, 	-- Awaiting nursing home placement or availability
+									at0010, 	-- Awaiting care package in own home
+									at0011, 	-- Awaiting community equipment and adaptations
+									at0012, 	-- Patient or Family choice
+									at0013, 	-- Disputes
+									at0014]	-- Housing – patients not covered by NHS and Community Care Act
+								}
+							}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Delay attributable to
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0016, 	-- NHS
+									at0017, 	-- Social Care
+									at0018]	-- Both
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Delayed discharge (UK)">
+					description = <"Detaisl of delayed discharge.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Start date">
+					description = <"Date that multi-disciplinary team agree that patient is ready for discharge.">
+				>
+				["at0003"] = <
+					text = <"End date">
+					description = <"The date that a period of delayed discharge for a patient who had previously been ready for discharge ended.  This may end because the patient was discharged or because the patient was no longer ready for discharge.">
+				>
+				["at0004"] = <
+					text = <"Delayed discharge reason">
+					description = <"The reason that a patient was not able to be discharged despite being medically ready for discharge.">
+				>
+				["at0005"] = <
+					text = <"Awaiting completion of assessment">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Awaiting public funding">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Awaiting further non-acute (including PCT community and mental health) NHS care (including intermediate care, rehabilitation services etc)">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Awaiting residential home placement or availability">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Awaiting nursing home placement or availability">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Awaiting care package in own home">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Awaiting community equipment and adaptations">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Patient or Family choice">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Disputes">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Housing – patients not covered by NHS and Community Care Act">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Delay attributable to">
+					description = <"To whom the delay is attributable to.">
+				>
+				["at0016"] = <
+					text = <"NHS">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Social Care">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Both">
+					description = <"">
+				>
+			>
+		>
+	>
